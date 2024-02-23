@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,31 +17,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtb-11-eoK">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="246" width="393" height="432"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dj6-ZE-0ur">
+                                <rect key="frame" x="56" y="116" width="281" height="34"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="comment" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XXC-pc-XyD">
+                                <rect key="frame" x="56" y="169" width="281" height="34"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Caf-7G-W5Z">
+                                <rect key="frame" x="152" y="719" width="88" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="wPe-Kf-mB7"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save">
+                                    <fontDescription key="titleFontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="25"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="csD-JT-UzD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.78110309629999997" green="0.86078912019999998" blue="0.71888333989999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="dtb-11-eoK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N1v-uB-Foa"/>
-                            <constraint firstItem="dtb-11-eoK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Wa9-eX-pU2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dtb-11-eoK" secondAttribute="trailing" id="eVE-Sg-EVO"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dtb-11-eoK" secondAttribute="bottom" id="hiJ-8m-Y1p"/>
+                            <constraint firstItem="Caf-7G-W5Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="152" id="2Ua-6R-7Ih"/>
+                            <constraint firstItem="dj6-ZE-0ur" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="56" id="9Qe-im-nCE"/>
+                            <constraint firstItem="dj6-ZE-0ur" firstAttribute="trailing" secondItem="XXC-pc-XyD" secondAttribute="trailing" id="QYr-Zo-dz6"/>
+                            <constraint firstItem="XXC-pc-XyD" firstAttribute="top" secondItem="dj6-ZE-0ur" secondAttribute="bottom" constant="19" id="QoI-W5-FcI"/>
+                            <constraint firstItem="Caf-7G-W5Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="STW-e5-Sfo"/>
+                            <constraint firstItem="dtb-11-eoK" firstAttribute="top" secondItem="XXC-pc-XyD" secondAttribute="bottom" constant="43" id="eVr-QQ-AEo"/>
+                            <constraint firstItem="XXC-pc-XyD" firstAttribute="centerX" secondItem="dtb-11-eoK" secondAttribute="centerX" id="hre-Uw-quD"/>
+                            <constraint firstItem="dj6-ZE-0ur" firstAttribute="leading" secondItem="XXC-pc-XyD" secondAttribute="leading" id="jv4-3X-hcn"/>
+                            <constraint firstItem="dtb-11-eoK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m2R-6W-IMM"/>
+                            <constraint firstItem="dj6-ZE-0ur" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="57" id="s73-kR-JdA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Caf-7G-W5Z" secondAttribute="bottom" constant="73" id="vNi-Zg-cpa"/>
+                            <constraint firstItem="dtb-11-eoK" firstAttribute="centerX" secondItem="Caf-7G-W5Z" secondAttribute="centerX" id="vc4-ot-a06"/>
+                            <constraint firstItem="Caf-7G-W5Z" firstAttribute="top" secondItem="dtb-11-eoK" secondAttribute="bottom" constant="41" id="ylK-ff-K2O"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="commentText" destination="XXC-pc-XyD" id="Lh1-xA-t0i"/>
                         <outlet property="mapView" destination="dtb-11-eoK" id="5DQ-xz-6Ux"/>
+                        <outlet property="nameText" destination="dj6-ZE-0ur" id="3W5-fG-6t6"/>
+                        <outlet property="saveButton" destination="Caf-7G-W5Z" id="R5X-4Y-41A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="-34"/>
+            <point key="canvasLocation" x="-17.557251908396946" y="-42.253521126760567"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
