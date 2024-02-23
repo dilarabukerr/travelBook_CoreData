@@ -27,6 +27,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //Harita ayarları
         mapView.delegate = self
         mapView.showsUserLocation = true //kullanıcı konumunu haritada göster
+        
+        // Uzun basma (long press) hareketi tanımlama ve bu hareketi dinleme
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        mapView.addGestureRecognizer(longPressGesture)//kullanıcının harita üzerinde bir yere uzun süre basması durumunda belirli bir işlemin gerçekleşmesini sağlar.
     }
     
     //konum izni değişikliklerini kontrol et
@@ -46,6 +50,27 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     //konum izni reddedildiğinde
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("konum izni hatası")
+    }
+    
+    //uzun basma (long press) işlemi gerçekleştiğinde çağrılan fonksiyon
+    @objc func handleLongPress (gesture:UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            //uzun basılan ilk noktayı al
+            let touchPoint = gesture.location(in: mapView)
+            //dokunulan noktayı harita koordinatlarına dönüştür
+            let coordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+            //pin ekleme fonksiyonunu çağır
+            addPin(coordinate: coordinate)
+        }
+    }
+    
+    //verilen koordinatlara bir pin ekleyen fonksiyon
+    func addPin (coordinate: CLLocationCoordinate2D){
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = "New Annotation"
+        annotation.subtitle = "Travel Book"
+        mapView.addAnnotation(annotation)
     }
 }
 
