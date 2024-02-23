@@ -18,20 +18,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     var locationManager = CLLocationManager() // Konum yöneticisi tanımı
     
-    //core data stacki için değişkenler
-    lazy var persistentContainer: NSPersistentContainer =  {
-        // NSPersistentContainer'ın bir örneği oluşturuluyor
-        let container = NSPersistentContainer(name: "PinEntity")
-        //kalıcı ögeler yükleniyor
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            //yükleme sırasında bir hata oluşursa..
-                    if let error = error as NSError? {
-                        fatalError("Unresolved error \(error), \(error.userInfo)")
-                    }
-                })
-        //oluşturulan konteyner döndürülüyor.
-        return container // konteyner uygulamanın veri modelini yükler, veritabanını başlatır, veritabanı dosyalarını oluşturur ve yönetir.
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +32,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //Harita ayarları
         mapView.delegate = self
         mapView.showsUserLocation = true //kullanıcı konumunu haritada göster
-        
-        //save buttonun actionunu tanımla
-        saveButton.addTarget(self, action: #selector(getter: saveButton), for: .touchUpInside)
-        
+
         
         // Uzun basma (long press) hareketi tanımlama ve bu hareketi dinleme
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
@@ -97,21 +80,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        //core data'da kullanılacak bir örnek oluştur
-     
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let pin = NSEntityDescription.insertNewObject(forEntityName: "PinEntity", into: context)
-        
-        // PinEntity'nin özelliklerine (attribute'larına) değer atıyoruz
-        pin.setValue(nameText.text, forKey: "name")
-        pin.setValue(commentText.text, forKey: "comment")
-        do{
-            try context.save()
-        } catch {
-            print("Error!")
-        }
+       
     }
 }
 
